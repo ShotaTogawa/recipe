@@ -18,6 +18,10 @@ exports.typeDefs = `
       favorites: [Recipe]
   }
 
+  type Token {
+    token: String!
+  }
+
   type Query {
       getAllRecipes: [Recipe]
   }
@@ -29,5 +33,10 @@ exports.typeDefs = `
       category: String!,
       instruction: String!,
       username: String!): Recipe
+
+    signupUser(
+      username: String!,
+      email: String!,
+      password: String!): Token
   }
 `;
