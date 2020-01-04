@@ -33,6 +33,7 @@ app.use("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
 // Connect shcemas to Graphql
 app.use(
   "/graphql",
+  bodyParser.json(),
   graphqlExpress({
     schema,
     context: {

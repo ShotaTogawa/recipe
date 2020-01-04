@@ -15,4 +15,8 @@ exports.typeDefs = `
       joinDate: String
       favorites: [Recipe]
   }
+
+  type Query {
+      getAllRecipes: [Recipe]
+  }
 `;
