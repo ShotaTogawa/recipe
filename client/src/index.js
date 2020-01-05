@@ -12,6 +12,7 @@ import ApolloClinet from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import Signin from "./components/Auth/Signin";
 import Signup from "./components/Auth/Signup";
+import withSession from "./components/Auth/WithSession";
 
 const client = new ApolloClinet({
   uri: "http://localhost:4444/graphql",
@@ -36,20 +37,22 @@ const client = new ApolloClinet({
   }
 });
 
-const Root = () => (
+const Root = ({ refetch }) => (
   <Router>
     <Switch>
       <Route path="/" exact component={App} />
-      <Route path="/signin" component={Signin} />
-      <Route path="/signup" component={Signup} />
+      <Route path="/signin" render={() => <Signin refetch={refetch} />} />
+      <Route path="/signup" render={() => <Signup refetch={refetch} />} />
       <Redirect to="/" />
     </Switch>
   </Router>
 );
 
+const RootWithSession = withSession(Root);
+
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <Root />
+    <RootWithSession />
   </ApolloProvider>,
   document.getElementById("root")
 );
