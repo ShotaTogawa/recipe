@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
@@ -13,6 +13,10 @@ import { ApolloProvider } from "react-apollo";
 import Signin from "./components/Auth/Signin";
 import Signup from "./components/Auth/Signup";
 import withSession from "./components/Auth/WithSession";
+import Navbar from "./components/Navbar";
+import Search from "./components/Recipe/Search";
+import AddRecipe from "./components/Recipe/AddRecipe";
+import Profile from "./components/Profile/Profile";
 
 const client = new ApolloClinet({
   uri: "http://localhost:4444/graphql",
@@ -37,14 +41,20 @@ const client = new ApolloClinet({
   }
 });
 
-const Root = ({ refetch }) => (
+const Root = ({ refetch, session }) => (
   <Router>
-    <Switch>
-      <Route path="/" exact component={App} />
-      <Route path="/signin" render={() => <Signin refetch={refetch} />} />
-      <Route path="/signup" render={() => <Signup refetch={refetch} />} />
-      <Redirect to="/" />
-    </Switch>
+    <Fragment>
+      <Navbar session={session} />
+      <Switch>
+        <Route path="/" exact component={App} />
+        <Route path="/search" exact component={Search} />
+        <Route path="/signin" render={() => <Signin refetch={refetch} />} />
+        <Route path="/signup" render={() => <Signup refetch={refetch} />} />
+        <Route path="/recipe/add" exact component={AddRecipe} />
+        <Route path="/profile" exact component={Profile} />
+        <Redirect to="/" />
+      </Switch>
+    </Fragment>
   </Router>
 );
 
