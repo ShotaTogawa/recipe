@@ -12,7 +12,7 @@ import ApolloClinet from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import Signin from "./components/Auth/Signin";
 import Signup from "./components/Auth/Signup";
-import withSession from "./components/Auth/WithSession";
+import withSession from "./components/WithSession";
 import Navbar from "./components/Navbar";
 import Search from "./components/Recipe/Search";
 import AddRecipe from "./components/Recipe/AddRecipe";
