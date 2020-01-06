@@ -32,7 +32,8 @@ const app = express();
 // cors
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://apollo-recipe-app.herokuapp.com/",
+  // "http://localhost:3000",
   credential: true
 };
 
