@@ -20,7 +20,7 @@ import RecipePage from "./components/Recipe/RecipePage";
 import Profile from "./components/Profile/Profile";
 
 const client = new ApolloClinet({
-  uri: "http://localhost:4444/graphql",
+  uri: "http://apollo-recipe-app.herokuapp.com/graphql",
   fetchOptions: {
     credentials: "include"
   },
