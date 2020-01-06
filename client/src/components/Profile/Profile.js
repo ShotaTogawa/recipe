@@ -1,7 +1,15 @@
 import React from "react";
+import Userinfo from "./Userinfo";
+import UserRecipes from "./UserRecipes";
+import WithAuth from "../WithAuth";
 
-const Profile = () => {
-  return <div>Profile</div>;
+const Profile = ({ session }) => {
+  return (
+    <div className="App">
+      <Userinfo session={session} />
+      <UserRecipes username={session.getCurrentUser.username} />
+    </div>
+  );
 };
 
-export default Profile;
+export default WithAuth(session => session && session.getCurrentUser)(Profile);

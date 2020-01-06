@@ -27,6 +27,7 @@ exports.typeDefs = `
       getRecipe(_id: ID!): Recipe
       getCurrentUser: User
       searchRecipes(searchTerm: String): [Recipe]
+      getUserRecipes(username: String!): [Recipe]
   }
 
   type Mutation {
@@ -46,6 +47,12 @@ exports.typeDefs = `
       username: String!,
       email: String!,
       password: String!): Token
+
+    deleteUserRecipe(_id: ID): Recipe
+
+    likeRecipe(_id: ID!, username: String!): Recipe
+    unlikeRecipe(_id: ID!, username: String!): Recipe
+
 
   }
 `;
