@@ -92,6 +92,10 @@ exports.resolvers = {
         password
       }).save();
       return { token: createToken(newUser, process.env.SECRET, "1hr") };
+    },
+    deleteUserRecipe: async (root, { _id }, { Recipe }) => {
+      const recipe = await Recipe.findOneAndRemove({ _id });
+      return recipe;
     }
   }
 };

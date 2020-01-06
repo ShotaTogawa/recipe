@@ -48,5 +48,7 @@ exports.typeDefs = `
       email: String!,
       password: String!): Token
 
+    deleteUserRecipe(_id: ID): Recipe
+
   }
 `;
