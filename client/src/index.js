@@ -16,6 +16,7 @@ import withSession from "./components/Auth/WithSession";
 import Navbar from "./components/Navbar";
 import Search from "./components/Recipe/Search";
 import AddRecipe from "./components/Recipe/AddRecipe";
+import RecipePage from "./components/Recipe/RecipePage";
 import Profile from "./components/Profile/Profile";
 
 const client = new ApolloClinet({
@@ -50,7 +51,13 @@ const Root = ({ refetch, session }) => (
         <Route path="/search" exact component={Search} />
         <Route path="/signin" render={() => <Signin refetch={refetch} />} />
         <Route path="/signup" render={() => <Signup refetch={refetch} />} />
-        <Route path="/recipe/add" exact component={AddRecipe} />
+        <Route
+          path="/recipe/add"
+          exact
+          render={() => <AddRecipe session={session} />}
+        />
+        <Route path="/recipes/:_id" exact component={RecipePage} />
+
         <Route path="/profile" exact component={Profile} />
         <Redirect to="/" />
       </Switch>

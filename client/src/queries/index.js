@@ -5,18 +5,66 @@ import { gql } from "apollo-boost";
 export const GET_ALL_RECIPES = gql`
   query {
     getAllRecipes {
+      _id
       name
       category
-      description
+    }
+  }
+`;
+
+export const GET_RECIPE = gql`
+  query($_id: ID!) {
+    getRecipe(_id: $_id) {
+      _id
+      name
+      category
       instruction
-      createdDate
-      likes
+      description
       username
+      likes
+      createdDate
+    }
+  }
+`;
+
+export const SEARCH_RECIPES = gql`
+  query($searchTerm: String) {
+    searchRecipes(searchTerm: $searchTerm) {
+      _id
+      name
+      likes
     }
   }
 `;
 
 /* Recipe's mutation */
+
+export const ADD_RECIPE = gql`
+  mutation(
+    $name: String!
+    $description: String!
+    $category: String!
+    $instruction: String!
+    $username: String!
+  ) {
+    addRecipe(
+      name: $name
+      description: $description
+      category: $category
+      instruction: $instruction
+      username: $username
+    ) {
+      _id
+      name
+      description
+      category
+      instruction
+      username
+      createdDate
+      likes
+    }
+  }
+`;
 
 /* User's query */
 
